@@ -49,7 +49,7 @@ args = parser.parse_args()
 # ori_chunk_data = np.reshape(ori_chunk_data,(size[0], size[1],1))
 # =============================================================================
 
-chunk_data = pd.read_csv("C:\\Users\\neelk\\Desktop\Aalborg\original_datasets\chunk_throughput\\" + str(args.dataset) + ".csv")
+chunk_data = pd.read_csv("/content/blah/original_datasets/chunk_throughput/" + str(args.dataset) + ".csv")
 ori_chunk_data = []
 for i in range(len(chunk_data.index)):
     temp = []
@@ -68,7 +68,7 @@ parameters = dict()
 
 parameters['module'] = 'gru' 
 parameters['hidden_dim'] = 8
-parameters['num_layer'] = 4
+parameters['num_layer'] = 8
 parameters['iterations'] = 10000
 parameters['batch_size'] = 8
 
@@ -83,8 +83,8 @@ print('Finish Synthetic Data Generation')
 
 data_out = generated_data[:,:,0]
 df_out = pd.DataFrame(data_out)
-df_out.to_csv("C:\\Users\\neelk\\Desktop\Aalborg\\generated_synthetic_data_long_form\chunk_throughput\\" + str(args.dataset) + "_chunks.csv")
+df_out.to_csv(str(args.dataset) + "_chunks.csv")
 
 data_out = generated_data[:,:,1]
 df_out = pd.DataFrame(data_out)
-df_out.to_csv("C:\\Users\\neelk\\Desktop\Aalborg\\generated_synthetic_data_long_form\chunk_throughput\\" + str(args.dataset) + "_throughputs.csv")
+df_out.to_csv(str(args.dataset) + "_throughputs.csv")
